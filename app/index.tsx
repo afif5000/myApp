@@ -1,12 +1,16 @@
 // import Latihan1 from "@/components/latihan/Latihan1";
 
-import LoginScreen from "@/components/tugas/LoginScreen";
+import Latihan3 from "@/components/latihan/Latihan3";
 
 export default function Index() {
   return (
     <>
       {/* <Latihan1 /> */}
-      <LoginScreen />
+      {/* <LoginScreen /> */}
+
+      {/* <Latihan2 /> */}
+
+      <Latihan3 />
     </>
   );
 }
