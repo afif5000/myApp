@@ -2,6 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import {
   FlatList,
   Image,
+  ImageSourcePropType,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -9,17 +10,73 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const notes = [
+const notes: Note[] = [
   {
     id: 1,
-    image: "@/assets/images/Logo.png",
+    image: require("@/assets/images/image-0.png"),
     title: "Belajar Mobile App",
     description: "Belajar membuat aplikasi mobile app",
     date: "29 Oktober 2025",
   },
   {
     id: 2,
-    image: "@/assets/images/Logo.png",
+    image: require("@/assets/images/image-1.png"),
+    title: "Belajar Backend",
+    description: "Belajar membuat restful api",
+    date: "30 Oktober 2025",
+  },
+  {
+    id: 3,
+    image: require("@/assets/images/image-2.png"),
+    title: "Belajar Backend",
+    description: "Belajar membuat restful api",
+    date: "30 Oktober 2025",
+  },
+  {
+    id: 4,
+    image: require("@/assets/images/image-3.png"),
+    title: "Belajar Backend",
+    description: "Belajar membuat restful api",
+    date: "30 Oktober 2025",
+  },
+  {
+    id: 5,
+    image: require("@/assets/images/image-3.png"),
+    title: "Belajar Backend",
+    description: "Belajar membuat restful api",
+    date: "30 Oktober 2025",
+  },
+  {
+    id: 6,
+    image: require("@/assets/images/image-3.png"),
+    title: "Belajar Backend",
+    description: "Belajar membuat restful api",
+    date: "30 Oktober 2025",
+  },
+  {
+    id: 7,
+    image: require("@/assets/images/image-3.png"),
+    title: "Belajar Backend",
+    description: "Belajar membuat restful api",
+    date: "30 Oktober 2025",
+  },
+  {
+    id: 8,
+    image: require("@/assets/images/image-3.png"),
+    title: "Belajar Backend",
+    description: "Belajar membuat restful api",
+    date: "30 Oktober 2025",
+  },
+  {
+    id: 9,
+    image: require("@/assets/images/image-3.png"),
+    title: "Belajar Backend",
+    description: "Belajar membuat restful api",
+    date: "30 Oktober 2025",
+  },
+  {
+    id: 10,
+    image: require("@/assets/images/image-3.png"),
     title: "Belajar Backend",
     description: "Belajar membuat restful api",
     date: "30 Oktober 2025",
@@ -28,7 +85,7 @@ const notes = [
 
 type Note = {
   id: number;
-  image: string;
+  image: ImageSourcePropType | { uri: string };
   title: string;
   description: string;
   date: string;
@@ -37,10 +94,7 @@ type Note = {
 const NoteItem = ({ item }: { item: Note }) => {
   return (
     <View style={styles.card}>
-      <Image
-        style={{ width: 80, height: 80 }}
-        source={require("@/assets/images/Logo.png")}
-      />
+      <Image style={{ width: 80, height: 80 }} source={item.image} />
 
       <View style={styles.cardContainer}>
         <Text style={styles.cardTitle}>{item.title}</Text>
@@ -69,7 +123,8 @@ export default function HomeScreen() {
           data={notes}
           renderItem={({ item }) => <NoteItem item={item} />}
           keyExtractor={(item) => item.id.toString()}
-          contentContainerStyle={{ gap: 10 }}
+          contentContainerStyle={{ gap: 10, flexGrow: 1 }}
+          ListEmptyComponent={() => <EmptyData />}
         />
       </View>
 
@@ -79,6 +134,21 @@ export default function HomeScreen() {
     </SafeAreaView>
   );
 }
+
+const EmptyData = () => {
+  return (
+    <View style={styles.emptyContainer}>
+      <Image
+        style={{ width: 150, height: 150 }}
+        source={require("@/assets/images/empty.png")}
+      />
+      <Text style={styles.emptyTitle}>Add your first note</Text>
+      <Text style={styles.emptyDesc}>
+        Save your thoughts, tasks or inspirations
+      </Text>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -141,5 +211,21 @@ const styles = StyleSheet.create({
   },
   cardDate: {
     fontSize: 14,
+  },
+
+  emptyContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 8,
+  },
+  emptyTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginTop: 8,
+  },
+  emptyDesc: {
+    fontSize: 16,
+    color: "grey",
   },
 });
