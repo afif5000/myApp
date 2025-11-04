@@ -1,6 +1,6 @@
 // import Latihan1 from "@/components/latihan/Latihan1";
 
-import HomeScreen from "@/components/tugas/HomeScreen";
+import DetailScreen from "@/components/tugas/DetailScreen";
 
 export default function Index() {
   return (
@@ -13,7 +13,8 @@ export default function Index() {
       {/* <Latihan3 /> */}
 
       {/* <Latihan4 /> */}
-      <HomeScreen />
+      {/* <HomeScreen /> */}
+      <DetailScreen />
     </>
   );
 }
