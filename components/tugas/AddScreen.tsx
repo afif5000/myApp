@@ -122,8 +122,7 @@ const styles = StyleSheet.create({
   button: {
     flexDirection: "row",
     padding: 10,
-    flex: 1,
-    marginBottom: "auto",
+    marginTop: 330,
   },
 
   add: {
